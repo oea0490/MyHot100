@@ -3,7 +3,7 @@ package Hot100.Matrix;
 public class RotateImage {
     public void rotate(int[][] matrix) {
         int n = matrix.length;
-        //确定待旋转的行列
+        //确定待旋转的区域
         int row = (n + 1) / 2;
         int col = n / 2;
         for (int i = 0 ; i < row ; i++){
