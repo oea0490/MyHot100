@@ -3,7 +3,7 @@ package Prime;
 import java.util.Arrays;
 
 public class Eratosthenes {
-    // 埃氏筛法
+    // 埃氏筛质数法
     final int N = 4000001;
     boolean[] isPrime = new boolean[N];
 

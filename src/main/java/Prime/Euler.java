@@ -3,7 +3,7 @@ package Prime;
 import java.util.Arrays;
 
 public class Euler {
-    // 欧拉筛(线性筛)
+    // 欧拉筛质数法(线性筛)
     final int N = 4000001;
     boolean[] isPrime = new boolean[N];
     int[] primes = new int[N]; // 用于存储质数
