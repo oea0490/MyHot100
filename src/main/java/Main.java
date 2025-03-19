@@ -5,65 +5,36 @@ public class Main {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         Solution solution = new Solution();
-        int[][] nums = new int[][]{{1,2,3},{4,9,6},{7,8,11}};
-        System.out.println(solution.diagonalPrime(nums));
+        String[] input = sc.nextLine().split(",");
+        int[] nums = new int[input.length];
+        for (int i = 0; i < input.length; i++) {
+            nums[i] = Integer.parseInt(input[i]);
+        }
+        System.out.println(solution.findMatrix(nums));
     }
 }
 
 class Solution {
-//    // 埃氏筛法
-//    final int N = 4000001;
-//    boolean[] isPrime = new boolean[N];
-//    public Solution(){
-//        //初始时所有数均为质数
-//        Arrays.fill(isPrime, true);
-//        //将0和1标记为非质数
-//        isPrime[0] = false;
-//        isPrime[1] = false;
-//        //遍历标记后面的数
-//        for(int i = 2; i < N; i++){
-//            if(isPrime[i]){
-//                for(int j = i * i ; j < N && j > 0 ; j += i){
-//                    isPrime[j] = false;
-//                }
-//            }
-//        }
-//    }
-    // 欧拉筛(线性筛)
-    final int N = 4000001;
-    boolean[] isPrime = new boolean[N];
-    int[] primes = new int[N]; // 用于存储质数
-    int count = 0; // 质数的数量
-
-    public Solution() {
-        //初始时所有数均为质数
-        Arrays.fill(isPrime, true);
-        //将0和1标记为非质数
-        isPrime[0] = false;
-        isPrime[1] = false;
-        //遍历标记后面的数
-        for (int i = 2; i < N; i++) {
-            if (isPrime[i]) {
-                primes[count++] = i; // 记录质数
-            }
-            for (int j = 0; j < count && i * primes[j] < N; j++) {
-                isPrime[i * primes[j]] = false; // 标记合数
-                if (i % primes[j] == 0) {
-                    break; // 保证每个合数只被其最小质因数标记一次
-                }
-            }
-        }
-    }
-    public int diagonalPrime(int[][] nums) {
+    public List<List<Integer>> findMatrix(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
         int n = nums.length;
-        int ans = 0;
-        for (int i = 0; i < n; i++){
-            if (isPrime[nums[i][i]]){
-                ans = Math.max(ans, nums[i][i]);
+        if (n == 0) return ans;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        while (!map.isEmpty()){
+            List<Integer> temp = new ArrayList<>();
+            Iterator<Map.Entry<Integer, Integer>> iterator = map.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Integer, Integer> entry = iterator.next();
+                int key = entry.getKey();
+                int val = entry.getValue();
+                temp.add(key);
+                if (val == 1) iterator.remove();
+                else map.put(key, val - 1);
             }
-            if (isPrime[nums[i][n - i - 1]]){
-                ans = Math.max(ans, nums[i][n - i - 1]);
-            }
+            ans.add(temp);
         }
         return ans;
     }
