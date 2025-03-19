@@ -11,7 +11,7 @@ public class FirstMissingPositive {
                 nums[i] = temp;
             }
         }
-        //第二次遍历,找到第一个不在自己对应位置上的数
+        //第二次遍历,找到第一个不在自己对应位置上的数字
         for (int i = 0 ; i < n ; i++){
             if (nums[i] != i + 1){
                 return i + 1;
