@@ -10,6 +10,7 @@ public class FindAllAnagramsInaString {
     Map<Character, Integer> pmap;
     public List<Integer> findAnagrams(String s, String p) {
         List<Integer> ans = new ArrayList<>();
+        //初始化pmap
         pmap = new HashMap<>();
         for (char c : p.toCharArray()) {
             pmap.put(c, pmap.getOrDefault(c, 0) + 1);
