@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class TrappingRainWater {
     public int stackTrap(int[] height) {
-        //单调不增栈做法
+        //单调不增栈方法
         Deque<Integer> stack = new LinkedList<>();
         int n = height.length;
         int maxArea = 0;
@@ -27,7 +27,7 @@ public class TrappingRainWater {
         return maxArea;
     }
     public int DpTrap(int[] height) {
-        //动态规划做法
+        //动态规划方法
         int n = height.length;
         int[] leftMax = new int[n];
         int[] rightMax = new int[n];
