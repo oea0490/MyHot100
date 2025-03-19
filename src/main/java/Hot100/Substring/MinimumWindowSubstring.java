@@ -7,6 +7,7 @@ public class MinimumWindowSubstring {
     Map<Character, Integer> smap;
     Map<Character, Integer> tmap;
     public String minWindow(String s, String t) {
+        //初始化tmap
         tmap = new HashMap<>();
         for (char c : t.toCharArray()){
             tmap.put(c, tmap.getOrDefault(c, 0) + 1);
