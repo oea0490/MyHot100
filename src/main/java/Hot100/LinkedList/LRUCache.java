@@ -3,22 +3,21 @@ package Hot100.LinkedList;
 import java.util.HashMap;
 import java.util.Map;
 
-class DLinkedNode {
-    int key;
-    int value;
-    DLinkedNode prev;
-    DLinkedNode next;
-
-    public DLinkedNode() {
-    }
-
-    public DLinkedNode(int key, int value) {
-        this.key = key;
-        this.value = value;
-    }
-}
-
 public class LRUCache {
+    private static class DLinkedNode {
+        int key;
+        int value;
+        DLinkedNode prev;
+        DLinkedNode next;
+
+        public DLinkedNode() {
+        }
+
+        public DLinkedNode(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
     private int capacity;
     private int size;
     private DLinkedNode head;
